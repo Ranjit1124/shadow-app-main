@@ -73,20 +73,112 @@ class Viewer {
 
         const loader = new GLTFLoader();
         loader.load(
-            './js/assets/edited.glb',
+            './js/assets/floor 3.glb',
             ( gltf ) => {
                 console.log(gltf);
                    
-                // gltf.scene.rotation.x=Math.PI/2
                 this.scene.add( gltf.scene );
-                // this.scene.add( gltf.scenes );
 
-                
-                // console.log(gltf.scene.children[0].castShadow=true);
-                
+                //  for(let i=8;i<=15;i++){
+                //     const room1=gltf.scene.children[0].children[i];
+                //     const box = new THREE.Box3().setFromObject(room1);
+                //     const boxCenter = box.getCenter(new THREE.Vector3());
+                //               const helper = new THREE.Box3Helper( box, 'red' );
+                //               console.log('b1center',boxCenter);
+                //               console.log(box);
+                //             this.scene.add( helper );
+    
+                //             const geometry = new THREE.BoxGeometry();
+                //             const material = new THREE.MeshBasicMaterial( { color: 'blue' } );
+                //             const cube = new THREE.Mesh( geometry, material );
+                //             cube.scale.set(0,0,0)
+                //             cube.position.copy(boxCenter)
+                //             this.scene.add( cube )
+    
+                //             const  cubeX=   box.max.x - box.min.x
+                //             const cubeZ = box.max.z - box.min.z
+    
+                //             new TWEEN.Tween(cube.scale)
+                //             .to({ x: cubeX, y: 0.1, z: cubeZ }, 3000)
+                //             .easing(TWEEN.Easing.Quadratic.InOut)
+                //             .start();
+                //  }
+              
+
+                const room1=gltf.scene.children[0].children[8];
+                const box = new THREE.Box3().setFromObject(room1);
+                const boxCenter = box.getCenter(new THREE.Vector3());
+                          const helper = new THREE.Box3Helper( box, 'red' );
+                          console.log('b1center',boxCenter);
+                          console.log(box);
+                        this.scene.add( helper );
+
+                        const geometry = new THREE.BoxGeometry();
+                        const material = new THREE.MeshBasicMaterial( { color: 'blue' } );
+                        const cube = new THREE.Mesh( geometry, material );
+                        cube.scale.set(0,0,0)
+                        cube.position.copy(boxCenter)
+                        this.scene.add( cube )
+
+                        const  cubeX=   box.max.x - box.min.x
+                        const cubeZ = box.max.z - box.min.z
+
+                        new TWEEN.Tween(cube.scale)
+                        .to({ x: cubeX, y: 0.1, z: cubeZ }, 3000)
+                        .easing(TWEEN.Easing.Quadratic.InOut)
+                        .start();
+                                        
+
+
+                        const room2=gltf.scene.children[0].children[9];
+                        const box2 = new THREE.Box3().setFromObject(room2);
+                        // const boxSize = box.getSize(new THREE.Vector3()).length();
+                        const boxCenter2 = box2.getCenter(new THREE.Vector3());
+                                  const helper2 = new THREE.Box3Helper( box2, 'red' );
+                                  console.log('bc',boxCenter2);
+                                this.scene.add( helper2 );
+                                const geometry2 = new THREE.BoxGeometry();
+                        const material2 = new THREE.MeshBasicMaterial( { color: 'red' } );
+                        const cube2 = new THREE.Mesh( geometry2, material2 );
+                        cube2.scale.set(0,0,0)
+                        cube2.position.copy(boxCenter2)
+                        this.scene.add( cube2 )
+
+                        const  cubeX2=   box.max.x - box.min.x
+                        const cubeZ2 = box.max.z - box.min.z
+
+                        new TWEEN.Tween(cube2.scale)
+                        .to({ x: cubeX2, y: 0.1, z: cubeZ2 }, 3000)
+                        .easing(TWEEN.Easing.Quadratic.InOut)
+                        .start();
+
+                        const room3=gltf.scene.children[0].children[15];
+                        const box3 = new THREE.Box3().setFromObject(room3);
+                        const boxCenter3 = box3.getCenter(new THREE.Vector3());
+                                  const helper3 = new THREE.Box3Helper( box3, 'red' );
+                                  console.log('b1center',boxCenter3);
+                                  console.log(box3);
+                                this.scene.add( helper3 );
+        
+                                const geometry3 = new THREE.BoxGeometry();
+                                const material3 = new THREE.MeshBasicMaterial( { color: 'green' } );
+                                const cube3 = new THREE.Mesh( geometry3, material3 );
+                                cube3.scale.set(0,0,0)
+                                cube3.position.copy(boxCenter3)
+                                this.scene.add( cube3 )
+        
+                                const  cubeX3=   box3.max.x - box3.min.x
+                                const cubeZ3 = box3.max.z - box3.min.z
+        
+                                new TWEEN.Tween(cube3.scale)
+                                .to({ x: cubeX3, y: 0.1, z: cubeZ3 }, 3000)
+                                .easing(TWEEN.Easing.Quadratic.InOut)
+                                .start();
+                                                
+        
+
             },
         )
-
 
 const directionalLight2 = new THREE.DirectionalLight( 0xffffff, 5 );
 directionalLight2.position.x=3
@@ -104,89 +196,7 @@ this.scene.add( directionalLight3 );
 const helper3 = new THREE.DirectionalLightHelper( directionalLight3, 2 );
 this.scene.add( helper3 );
 
-        // const geometry = new THREE.PlaneGeometry( 10,10 );
-        // const material = new THREE.MeshBasicMaterial( {color: 'green', side: THREE.DoubleSide} );
-        // const plane = new THREE.Mesh( geometry, material );
-        // plane.rotation.x=Math.PI/2
-        // this.scene.add( plane );
         this.camera.position.z=5
-        // this.camera.rotation.y=-Math.PI/2
-
-       /*  const pointLightBlue = new THREE.SpotLight( 'blue',500 );
-pointLightBlue.position.set( 15,0,0 );
-pointLightBlue.castShadow = true;
-pointLightBlue.distance=20
-pointLightBlue.angle=-1
-pointLightBlue.decay=0
-this.scene.add( pointLightBlue );
-new TWEEN.Tween(pointLightBlue.position)
-.to({ x:2.8,y:1.5, z:1.3},5000)
-.easing(TWEEN.Easing.Quadratic.InOut)
-.start();
- */
-
-
-    //  const tween = new Tween.Tween(pointLightBlue.position)
-    // .to({ x: 2.8, y: 1.5, z: 1.3 }, 2000) // target position and duration
-    // .easing(Tween.Easing.Quadratic.Out) // easing function
-    // .onComplete(() => {
-    //     console.log('Animation complete!');
-    // })
-    // tween.start();
-// const pointLightBlueHelper = new THREE.SpotLightHelper( pointLightBlue );
-// this.scene.add( pointLightBlueHelper );
-/* 
-const pointLightRed = new THREE.SpotLight( 'red',500 );
-pointLightRed.position.set( -2.4, 1.5, 1.5 );
-// pointLightBlue.map = new THREE.TextureLoader().load( url );
-
-pointLightRed.castShadow = true;
-pointLightRed.distance=20
-
-pointLightRed.angle=-1
-pointLightRed.decay=0
-this.scene.add( pointLightRed ); */
-// const pointLightRedHelper = new THREE.SpotLightHelper( pointLightRed );
-// this.scene.add( pointLightRedHelper );
-
-/*  const pointLightGreen = new THREE.SpotLight( 'green',1000 );
-pointLightGreen.position.set( 15,0,0 );
-// pointLightGreen.map = new THREE.TextureLoader().load( './js/assets/green.jpeg' );
-pointLightGreen.castShadow = true;
-pointLightGreen.distance=10
-pointLightGreen.angle=-1
-pointLightGreen.decay=0
-this.scene.add( pointLightGreen );
-
- new TWEEN.Tween(pointLightGreen.position)
-        .to({ x:2.8,y:1.5, z:-1.3},5000)
-        .easing(TWEEN.Easing.Quadratic.InOut)
-        .start(); */
-        // const pointLightGreenHelper = new THREE.SpotLightHelper( pointLightGreen );
-        // this.scene.add( pointLightGreenHelper );
-/*         
-const pointLightYellow = new THREE.SpotLight( 'Yellow',500 );
-pointLightYellow.position.set( -2.4, 1.5, -1.5 );
-pointLightYellow.castShadow = true;
-pointLightYellow.distance=20
-pointLightYellow.angle=-1
-pointLightYellow.decay=0
-this.scene.add( pointLightYellow ); */
-// const pointLightYellowHelper = new THREE.SpotLightHelper( pointLightYellow );
-// this.scene.add( pointLightYellowHelper );
-
-/* const pointLightDining = new THREE.PointLight( '#34ebd5',1000 );
-pointLightDining.position.set( 0, 1.5, 1.5 );
-pointLightDining.castShadow = true;
-pointLightDining.distance=20
-pointLightDining.angle=-1
-pointLightDining.decay=0
-this.scene.add( pointLightDining ); */
-// const pointLightDiningHelper = new THREE.SpotLightHelper( pointLightDining );
-// this.scene.add( pointLightDiningHelper );
-
-
-
     }
 
 
